@@ -37,31 +37,31 @@ int main() {
 	EasyTcpClient client;
 	client.Connect("192.168.85.1",4567);
 	//MacOS
-	EasyTcpClient client2;
-	client2.Connect("192.168.85.128",4567);
+	//EasyTcpClient client2;
+	//client2.Connect("192.168.85.128",4567);
 	//Ubuntu
-	EasyTcpClient client3;
-	client3.Connect("192.168.85.129",4567);
+	//EasyTcpClient client3;
+	//client3.Connect("192.168.85.129",4567);
 	//启动UI线程
 	std::thread t1(cmdThread, &client);
 	t1.detach(); 
 
-	std::thread t2(cmdThread, &client2);
-	t2.detach();
+	//std::thread t2(cmdThread, &client2);
+	//t2.detach();
 
-	std::thread t3(cmdThread, &client3);
-	t3.detach();
+	//std::thread t3(cmdThread, &client3);
+	//t3.detach();
 
-	while (client.isRun() || client2.isRun() || client3.isRun())
-	//while (client.isRun())
+	//while (client.isRun() || client2.isRun() || client3.isRun())
+	while (client.isRun())
 	{
 		client.OnRun();
-		client2.OnRun();
-		client3.OnRun();
+		//client2.OnRun();
+		//client3.OnRun();
 	}
 	client.Close();
-	client2.Close();
-	client3.Close();
+	//client2.Close();
+	//client3.Close();
 
 	printf("已退出。\n");
 	//防止一闪而过
