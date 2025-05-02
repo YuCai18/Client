@@ -49,7 +49,7 @@ void sendThread(int id)
 		//win7 "192.168.1.114" i7 2670qm
 		//127.0.0.1
 		//39.108.13.69 
-		client[n]->Connect("127.0.0.1", 4567);
+		client[n]->Connect("169.254.161.135", 4567);
 	}
 
 	printf("thread<%d>,Connect<begin=%d, end=%d>\n", id, begin, end);
@@ -60,8 +60,11 @@ void sendThread(int id)
 		std::chrono::milliseconds t(10);
 		std::this_thread::sleep_for(t);
 	}
+	//单发数据包
+	//Login login[1];
 
-	Login login[1];
+	//发送十个数据包
+	Login login[10];
 	for (int n = 0; n < 10; n++)
 	{
 		strcpy(login[n].userName, "lyd");
